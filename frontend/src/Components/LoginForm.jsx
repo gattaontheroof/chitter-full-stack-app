@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
+import AuthService from '../services/auth.service';
 
 const LoginForm = () => {
 
-  const [username, setUsername] = useState(``);
+  const [identifier, setIdentifier] = useState(``);
   const [password, setPassword] = useState(``);
+  const [message, setMessage] = useState(``);
 
-  const onChangeUsername = e => {
-    const newUsername = e.target.value;
-    setUsername(newUsername);
+  const onChangeIdentifier = e => {
+    const newIdentifier = e.target.value;
+    setIdentifier(newIdentifier);
 }
 
   const onChangePassword = e => {
@@ -15,28 +17,34 @@ const LoginForm = () => {
     setPassword(newPassword);
 }
 
-  const handleSubmit = (e) => {
+  const handleLogin = async e => {
     e.preventDefault();
  
-    console.log('Call Login API placeholder..:', username, password);
+    //console.log('Call Login API placeholder..:', username, password);
+
+    const login = await AuthService.login(identifier, password);
+
+    console.log(login);
+
+    setMessage(login.error);
   };
 
   return (
 
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="username">Username:</label>
+    <form onSubmit={handleLogin}>
+      <div className="form-group">
+        <label htmlFor="identifier">Username or Email:</label>
         <br/>
         <input 
           type="text" 
-          id="username" 
-          name="username" 
-          value={username} 
-          onChange={onChangeUsername} 
+          id="identifier" 
+          name="identifier" 
+          value={identifier} 
+          onChange={onChangeIdentifier} 
           required 
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="password">Password:</label>
         <br/>
         <input 
@@ -49,7 +57,21 @@ const LoginForm = () => {
         />
       </div>
       <br/>
-      <button type="submit" className="btn btn-primary">Login</button>
+      <div className="form-group">
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
+      </div>
+
+      {message && (
+        <div className="form-group">
+          <br/>
+          <div className="alert alert-danger" role="alert">
+            {message}
+          </div>
+        </div>
+      )}
+
   </form>
 
 

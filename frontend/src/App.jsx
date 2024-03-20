@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Homepage from "./Components/Homepage";
 import AuthModal from './Components/AuthModal';
+import Navbar from './Components/Navbar';
+import Header from './Components/Header';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -18,18 +20,17 @@ function App() {
   return (
 
     <div>
-      <button type="button" className="btn btn-primary" onClick={handleShow}>
-        Login
-      </button>
-  
+      <Navbar onLoginClick={handleShow}/>
+      <Header/>
       {showModal && <AuthModal onCancel={handleClose} />}
       {showModal && <div className="modal-backdrop fade show"></div>}
 
     </div>
 
+
     /*
       <Header />
-      
+      <Sidenav/>
       <PeepList />
         <Peep />
           <ReplyList /> // stretch

@@ -1,16 +1,18 @@
 import User from "../models/user.model.js";
 
-const register = async (email, password) => {
+const register = async (name, username, email, password) => {
 
     try {
-        // Check if a user with this email exists
-        const existingUser = await User.findOne({ email });
-        if(existingUser){
+        // Check if a user with this email or username exists
+        const existingUserWithEmail = await User.findOne({ email });
+        const existingUserWithUsername = await User.findOne({ username });
+
+        if(existingUserWithEmail || existingUserWithUsername){
             throw new Error("User already exists.");
         }
 
         // Create a new User with the correct details
-        const user = new User({ email, password });
+        const user = new User({ name, username, email, password });
         await user.save();
 
     } catch (e) {
@@ -19,9 +21,19 @@ const register = async (email, password) => {
 
 };
 
-const login = async (email, password) => {
+const login = async (identifier, password) => {
+
     // Check if a user with this email exists
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email: identifier });
+
+    console.log(user);
+
+    if(!user){
+        // Check if a user with this username exists
+        user = await User.findOne({ username: identifier });
+
+        console.log(user);
+    }
 
     if(!user){
         throw new Error("User not found.");

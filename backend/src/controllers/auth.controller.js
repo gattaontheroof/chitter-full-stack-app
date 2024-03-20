@@ -2,10 +2,10 @@ import { authService } from "../services/auth.service.js";
 
 const register = async (req, res) => {
 
-    const { email, password } = req.body;
+    const { name, username, email, password } = req.body;
 
     try {
-        const user = await authService.register(email, password);
+        const user = await authService.register(name, username, email, password);
         res.status(201).send({ message: `Register Success`, user });
     } catch (error) {
         res.status(400).send({
@@ -17,15 +17,15 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
 
-    const { email, password } = req.body;
+    // identifier can be username or email address
+    const { identifier, password } = req.body;
 
     try {
-        const user = await authService.login(email, password);
+        const user = await authService.login(identifier, password);
         res.status(200).send({ message: `Login Success`, user });
     } catch (error) {
         res.status(400).send({
-            message: error.message,
-            user: req.body,
+            message: error.message
         });
     }
 }
