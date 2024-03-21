@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Homepage from "./Components/Homepage";
 import AuthModal from './Components/AuthModal';
 import Navbar from './Components/Navbar';
-import Header from './Components/Header';
-
+import NewPeepForm from './Components/NewPeepForm';
+import "./App.css"; 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import "./App.css"; 
+
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
 
     <div>
       <Navbar onLoginClick={handleShow}/>
-      <Header/>
+      <NewPeepForm/>
       {showModal && <AuthModal onCancel={handleClose} />}
       {showModal && <div className="modal-backdrop fade show"></div>}
 
@@ -29,7 +29,7 @@ function App() {
 
 
     /*
-      <Header />
+      <NewPeepBox />
       <Sidenav/>
       <PeepList />
         <Peep />

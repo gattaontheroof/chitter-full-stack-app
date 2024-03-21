@@ -6,7 +6,7 @@ const register = async (req, res) => {
 
     try {
         const user = await authService.register(name, username, email, password);
-        res.status(201).send({ message: `Register Success`, user });
+        res.status(201).send({ message: `Register Success` });
     } catch (error) {
         res.status(400).send({
             message: error.message,

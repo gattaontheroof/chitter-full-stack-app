@@ -3,9 +3,9 @@ import React from 'react';
 const Navbar = ({onLoginClick}) => {
 
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-dark bg-dark">
       <h3>Chitter</h3> 
-      <button className="btn btn-outline-primary my-2 my-sm-0" onClick={onLoginClick}>
+      <button className="btn btn-success" id="navbarButton" onClick={onLoginClick}>
         Login
       </button>
     </nav>

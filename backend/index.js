@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import { connectDb } from './src/db/db.connection.js';
 import authRouter from './src/routes/auth.routes.js';
+import peepRouter from './src/routes/peep.routes.js';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 connectDb();
 
 app.use(`/api/auth`, authRouter);
+app.use(`/api/peep`, peepRouter);
 
 app.get(`/`, (req, res) => {
     res.json({ message: `Welcome to the application` });

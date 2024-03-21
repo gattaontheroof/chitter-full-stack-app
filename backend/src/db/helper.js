@@ -5,30 +5,30 @@ const emptyOrRows = rows => {
     return rows;
 };
 
-export const camelCaseFields = todo => {
+export const camelCaseFields = user => {
     const {
         _id,
-        todo_description: todoDescription,
-        todo_date_created: todoDateCreated,
-        todo_completed: todoCompleted
-    } = todo;
+        user_name: userName,
+        user_email: userEmail,
+        user_username: userUsername,
+    } = user;
     return ({
-        todoDescription,
-        todoDateCreated,
-        todoCompleted,
-        _id
+        _id,
+        userName,
+        userEmail,
+        userUsername
     });
 };
 
 export const camelCaseResultsSet = rows => {
-    return (rows.length === 0) ? [] : rows.map(todo => camelCaseFields(todo)); 
+    return (rows.length === 0) ? [] : rows.map(user => camelCaseFields(user)); 
 }
 
-export const pascal_case_fields = newTodo => (
+export const pascal_case_fields = newUser => (
     {
-        todo_description: newTodo.todoDescription,
-        todo_date_created: newTodo.todoDateCreated,
-        todo_completed: newTodo.todoCompleted,
-        _id: newTodo._id
+        user_name: newUser.userName,
+        user_email: newUser.userEmail,
+        user_username: newUser.userUsername,
+        _id: newUser._id
     }
 );

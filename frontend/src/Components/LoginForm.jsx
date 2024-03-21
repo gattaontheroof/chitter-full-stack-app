@@ -10,21 +10,21 @@ const LoginForm = () => {
   const onChangeIdentifier = e => {
     const newIdentifier = e.target.value;
     setIdentifier(newIdentifier);
-}
+  }
 
   const onChangePassword = e => {
     const newPassword = e.target.value;
     setPassword(newPassword);
-}
+  }
 
   const handleLogin = async e => {
     e.preventDefault();
  
-    //console.log('Call Login API placeholder..:', username, password);
-
     const login = await AuthService.login(identifier, password);
 
-    console.log(login);
+    // set JWT placeholder
+
+    //console.log(login);
 
     setMessage(login.error);
   };
@@ -58,7 +58,7 @@ const LoginForm = () => {
       </div>
       <br/>
       <div className="form-group">
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-success">
           Login
         </button>
       </div>
@@ -71,12 +71,8 @@ const LoginForm = () => {
           </div>
         </div>
       )}
-
-  </form>
-
-
-
-  );
+    </form>
+    );
   };
   
   export default LoginForm;

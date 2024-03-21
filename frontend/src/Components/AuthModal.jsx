@@ -20,9 +20,10 @@ function AuthModal({onCancel}) {
           default:
             return (
                 <div>
-                    <div>Please Login or Register to continue</div>
+                    <div>Please Login to post your peeps</div> 
                     <button type="button" className="btn btn-success" onClick={showLogin}>Login</button>
-                    <button type="button" className="btn btn-warning" onClick={showRegister}>Register</button>
+                    <div>Don't have an account? <a href="#" onClick={showRegister}>Register</a> 
+                    </div>
                 </div>
             );
         }
@@ -34,7 +35,7 @@ function AuthModal({onCancel}) {
             <div className="modal-content">
               <div className="modal-header">
 
-                <h5 className="modal-title">Chitter Authentication</h5>
+                <h5 className="modal-title">Hear the latest chatter!</h5>
 
               </div>
               <div className="modal-body">

@@ -1,0 +1,31 @@
+import { peepService } from "../services/peep.service.js";
+
+const createPeep = async (req, res) => {
+
+    const { content }= req.body;
+
+    try {
+        await peepService.createPeep(content);
+        res.status(200).send({ message: `Peep Post Success` });
+    } catch (error) {
+        res.status(400).send({
+            message: error.message
+        });
+    }
+}
+
+const viewAllPeeps = async (req, res) => {
+
+    try {
+        const peeps = await peepService.viewAllPeeps();
+        res.json(peeps);
+    } catch (error) {
+        res.status(400).send({
+            message: error.message
+        });
+    }
+}
+
+const peepControllers = { createPeep, viewAllPeeps };
+
+export default peepControllers;
