@@ -3,15 +3,22 @@ import React from 'react';
 const PeepBox = ({content, date}) => {
      
     return (
-        <div className="col-lg-3 col-md-6 col-sm-6 col-12" id="peep-box"> 
-        <div className="card" id="peep-card">
-           
-        <h5 className="card-header">{`${date}`}</h5>
-            <div className="card-body">
-                <h3 className="card-text">{content}</h3>
+        <div>
+            <div className="card col-md-12" >  
+                <div className="card-header">
+                    {date}
+                </div>
+                <div className="card-body">
+                    <blockquote className="blockquote mb-0">
+                        <p className="card-text">{content}</p>
+                        <footer className="blockquote-footer">
+                            Kermit The Frog
+                        </footer>
+                    </blockquote>
+                </div>
             </div>
-        </div>
-    </div>
+            <br />
+        </div> 
     );
 };
 

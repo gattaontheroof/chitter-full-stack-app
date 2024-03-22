@@ -16,8 +16,23 @@ const createPeep = async (content) => {
     }
 };
 
+const getAllPeeps = async (content) => {
+    try {
+        const response = await axios.get(`${API_URL}/`, {
+            content
+        });
+        const data = await response.data;
+
+        return data;
+    }
+    catch (error) {
+        return { error: error.response.data.message };
+    }
+};
+
 const peepService = {
-    createPeep
+    createPeep,
+    getAllPeeps
 };
 
 export default peepService;

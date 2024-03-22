@@ -6,7 +6,7 @@ const createPeep = async (req, res) => {
 
     try {
         await peepService.createPeep(content);
-        res.status(200).send({ message: `Peep Post Success` });
+        res.status(201).send();
     } catch (error) {
         res.status(400).send({
             message: error.message

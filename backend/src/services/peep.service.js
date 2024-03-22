@@ -11,7 +11,10 @@ const createPeep = async (content) => {
 const viewAllPeeps = async () => {
 
     // return all Peeps in descending order of date
-    return await Peep.find({}).sort({ date: 'desc' });
+    return await Peep
+                    .find({})
+                    .select('_id content date')
+                    .sort({ date: 'desc' });
 };
 
 

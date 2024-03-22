@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import peepService from '../services/peep.service';
 
-const NewPeepForm = () => {
+const NewPeepForm = ({ currentUser, onPeepCreated }) => {
 
   const [content, setContent] = useState(``);
   const [message, setMessage] = useState(``);
+
+  const [showPeepForm, setShowPeepForm] = useState(true);
 
   const onChangeContent = e => {
     const newContent = e.target.value;
@@ -16,52 +18,51 @@ const NewPeepForm = () => {
 
     const response = await peepService.createPeep(content);
 
-    if(response.message) {
+    if(!response.error) {
       setContent("");
-      // placeholder for getting all peeps
+      onPeepCreated();
     }
 
     setMessage(response.error);
   }
-
+  
   return (
-
-      <div className="center-container" id="post-new-peep" style={{width: '100vw'}}>
+    showPeepForm && (
+      <div className="center-container" id="post-new-peep">
         <div className="card w-50" >  
           <div className="card-body">
             <h5 className="card-title">Post a peep...</h5>
-          
-            
-
-
-            <form onSubmit={handlePost}>
-
-              <div className="form-group">
-                <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={content} onChange={onChangeContent}/>
-              </div>
-
-              <br/>
-              <div className="form-group">
-                <button type="submit" className="btn btn-success">
-                  Post
-                </button>
-              </div>
-
-              {message && (
+           
+            {currentUser ? (
+              <form onSubmit={handlePost}>
                 <div className="form-group">
-                  <br/>
-                  <div className="alert alert-danger" role="alert">
-                    {message}
-                  </div>
+                  <textarea className="form-control" id="exampleFormControlTextarea1" rows="3" value={content} onChange={onChangeContent}/>
                 </div>
-              )}
-            </form>
 
+                <br/>
+                <div className="form-group">
+                  <button type="submit" className="btn btn-success">
+                    Post
+                  </button>
+                </div>
+
+                {message && (
+                  <div className="form-group">
+                    <br/>
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                )}
+              </form>
+            ) : (
+              <p>Please Login to post a Peep</p>
+            )} 
 
           </div>
         </div>
       </div>
-  
+    )
   );
 };
 

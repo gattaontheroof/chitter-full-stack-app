@@ -4,15 +4,26 @@ import PeepBox from './PeepBox';
 const PeepList = ({peeps}) => {
 
     const renderedPeeps = peeps.map((peep) => {
-        return <PeepBox {...peep}  key={new Date.getDate()} />
+        return <PeepBox {...peep}  key={peep._id} />
     });
 
     return (
-        <div className="container text-center">
-            <div className="row row-cols-1 row-cols-md-4 g-4">
+
+     
+        <div className="container text-center" id="fav-locations-container">
+        
+            <div className="row">
+                <h2>Latest Peeps!</h2>
+            </div>
+            
+            <div className="row">
                 {renderedPeeps}
             </div>
+
         </div>
+
+   
+
     );
 }
 

@@ -3,7 +3,10 @@ import Homepage from "./Components/Homepage";
 import AuthModal from './Components/AuthModal';
 import Navbar from './Components/Navbar';
 import NewPeepForm from './Components/NewPeepForm';
+import PeepList from './Components/PeepList';
+
 import authService from './services/auth.service';
+import peepService from './services/peep.service';
 
 import "./App.css"; 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,11 +17,16 @@ function App() {
 
     // hooks
     useEffect(() => {
+
       updateCurrentUser();
+
+      updatePeeps();
+
     }, []);
 
     // state
     const [currentUser, setCurrentUser] = useState(undefined);
+    const [peeps, setPeeps] = useState([]);
     const [showModal, setShowModal] = useState(false);
 
     // event handlers
@@ -30,6 +38,14 @@ function App() {
 
       if(user) {
         setCurrentUser(user);
+      }
+    }
+
+    const updatePeeps = async () => {
+      const peeps = await peepService.getAllPeeps();
+
+      if(peeps) {
+        setPeeps(peeps);
       }
     }
 
@@ -48,7 +64,9 @@ function App() {
     <div>
       <Navbar currentUser={currentUser} onLoginClick={handleShow} onLogoutClick={logout}/>
 
-      <NewPeepForm currentUser={currentUser}/>
+      <NewPeepForm currentUser={currentUser} onPeepCreated={updatePeeps}/>
+
+      <PeepList peeps={peeps} />
 
       {showModal && <AuthModal onLogin={login} onCancel={handleClose} />}
       {showModal && <div className="modal-backdrop fade show"></div>}
