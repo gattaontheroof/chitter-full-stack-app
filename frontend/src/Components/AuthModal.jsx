@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
-function AuthModal({onCancel}) {
+function AuthModal({ onLogin, onCancel }) {
 
     // state
     const [modalState, setModalState] = useState('default');
@@ -14,7 +14,7 @@ function AuthModal({onCancel}) {
     const renderModalBody = () => {
         switch (modalState) {
           case 'login':
-            return <LoginForm />;
+            return <LoginForm onLogin={onLogin} />;
           case 'register':
             return <RegisterForm />;
           default:

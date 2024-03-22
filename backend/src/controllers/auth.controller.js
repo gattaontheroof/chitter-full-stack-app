@@ -21,8 +21,14 @@ const login = async (req, res) => {
     const { identifier, password } = req.body;
 
     try {
-        const user = await authService.login(identifier, password);
-        res.status(200).send({ message: `Login Success`, user });
+        const { token, user} = await authService.login(identifier, password);
+        res.json({
+            id: user.id,
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            accessToken: token
+        })
     } catch (error) {
         res.status(400).send({
             message: error.message

@@ -26,13 +26,9 @@ const login = async (identifier, password) => {
     // Check if a user with this email exists
     let user = await User.findOne({ email: identifier });
 
-    console.log(user);
-
     if(!user){
         // Check if a user with this username exists
         user = await User.findOne({ username: identifier });
-
-        console.log(user);
     }
 
     if(!user){
@@ -43,7 +39,17 @@ const login = async (identifier, password) => {
         throw new Error("Login failed.");
     }
 
-    return user;
+    // placeholder for signing new jwt access token
+
+    return {
+        token: "123",
+        user: {
+            id: user._id,
+            name: user.name,
+            email: user.email,
+            username: user.username
+        }
+    };
 };
 
 export const authService = {

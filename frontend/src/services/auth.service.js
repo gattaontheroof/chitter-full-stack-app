@@ -27,9 +27,9 @@ const login = async (identifier, password) => {
         });
         const data = await response.data;
 
-        //if (data.accessToken) {
-        //    localStorage.setItem(`user`, JSON.stringify(response.data));
-        //}
+        if (data.accessToken) {
+            localStorage.setItem(`user`, JSON.stringify(response.data));
+        }
 
         return data;
     }

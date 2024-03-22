@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import AuthService from '../services/auth.service';
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
 
   const [identifier, setIdentifier] = useState(``);
   const [password, setPassword] = useState(``);
@@ -22,9 +22,9 @@ const LoginForm = () => {
  
     const login = await AuthService.login(identifier, password);
 
-    // set JWT placeholder
-
-    //console.log(login);
+    if(localStorage.getItem("user")) {
+      onLogin();
+    }
 
     setMessage(login.error);
   };

@@ -26,11 +26,14 @@ const NewPeepForm = () => {
 
   return (
 
-      <div className="center-container" id="post-new-peep">
-        <div className="card w-75" >  
+      <div className="center-container" id="post-new-peep" style={{width: '100vw'}}>
+        <div className="card w-50" >  
           <div className="card-body">
             <h5 className="card-title">Post a peep...</h5>
           
+            
+
+
             <form onSubmit={handlePost}>
 
               <div className="form-group">
@@ -53,6 +56,7 @@ const NewPeepForm = () => {
                 </div>
               )}
             </form>
+
 
           </div>
         </div>
