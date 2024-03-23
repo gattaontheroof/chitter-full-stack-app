@@ -19,7 +19,12 @@ const formatDate = (date) => {
   const day = dateObj.getDate();
   const dayOfWeek = dateObj.getDay();
   const hour = dateObj.getHours();
-  const minutes = dateObj.getMinutes();
+  let minutes = dateObj.getMinutes();
+
+  // append '0' to minutes if less than 10
+  if(minutes < 10) {
+    minutes = "0" + minutes;
+  }
 
   // Names of months
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

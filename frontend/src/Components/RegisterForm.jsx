@@ -2,13 +2,14 @@ import React from "react";
 import { useState } from "react";
 import AuthService from '../services/auth.service';
 
-const RegisterForm = () => {
+const RegisterForm = ({ showLogin }) => {
 
   const [name, setName] = useState(``);
   const [email, setEmail] = useState(``);
   const [username, setUsername] = useState(``);
   const [password, setPassword] = useState(``);
-  const [message, setMessage] = useState(``);
+  const [registered, setRegistered] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
 
   const onChangeName = e => {
     const newName = e.target.value;
@@ -33,9 +34,17 @@ const RegisterForm = () => {
   const handleRegister = async e => {
     e.preventDefault();
 
-    const register = await AuthService.register(name, email, username, password);
+    const register = await AuthService.register(name, username, email, password);
 
-    setMessage(register.error);
+    if(!register.error) {
+      setRegistered(true);
+      setErrorMessage('');
+    }
+    else {
+      setRegistered(false);
+      setErrorMessage(register.error);
+    }
+
   };
 
   return (
@@ -96,11 +105,20 @@ const RegisterForm = () => {
         </button>
       </div>
 
-      {message && (
+      {registered && (
+        <div className="form-group">
+          <br/>
+          <div className="alert alert-success" role="alert">
+              Please <a href="#" onClick={showLogin}>Login</a> 
+          </div>
+        </div>
+      )}
+
+      {errorMessage && (
         <div className="form-group">
           <br/>
           <div className="alert alert-danger" role="alert">
-            {message}
+            {errorMessage}
           </div>
         </div>
       )}

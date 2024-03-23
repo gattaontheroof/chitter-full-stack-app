@@ -16,7 +16,7 @@ function AuthModal({ onLogin, onCancel }) {
           case 'login':
             return <LoginForm onLogin={onLogin} />;
           case 'register':
-            return <RegisterForm />;
+            return <RegisterForm showLogin={showLogin} />;
           default:
             return (
                 <div>

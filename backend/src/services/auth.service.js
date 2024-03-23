@@ -1,4 +1,6 @@
 import User from "../models/user.model.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const register = async (name, username, email, password) => {
 
@@ -12,7 +14,12 @@ const register = async (name, username, email, password) => {
         }
 
         // Create a new User with the correct details
-        const user = new User({ name, username, email, password });
+        const user = new User({ 
+            name, 
+            username, 
+            email, 
+            password: bcrypt.hashSync(password, 8) 
+        });
         await user.save();
 
     } catch (e) {
@@ -35,14 +42,16 @@ const login = async (identifier, password) => {
         throw new Error("User not found.");
     }
 
-    if(password != user.password) {
+    const validPassword = bcrypt.compareSync(password, user.password);
+    if(!validPassword) {
         throw new Error("Login failed.");
     }
 
-    // placeholder for signing new jwt access token
+    // generate jwt access token
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: 86400 } )
 
     return {
-        token: "123",
+        token: token,
         user: {
             id: user._id,
             name: user.name,

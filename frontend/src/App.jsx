@@ -93,7 +93,7 @@ function App() {
       The quick brown fox jumped over the lazy dog.
       Breeding season for toads has begun!
       Who let the frogs out!?
-      Kermits big day today!
+      Kermit's big day today!
 
     */
   

@@ -2,10 +2,11 @@ import { peepService } from "../services/peep.service.js";
 
 const createPeep = async (req, res) => {
 
+    const userId = req.userId;
     const { content }= req.body;
 
     try {
-        await peepService.createPeep(content);
+        await peepService.createPeep(content, userId);
         res.status(201).send();
     } catch (error) {
         res.status(400).send({
