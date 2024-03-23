@@ -1,12 +1,14 @@
 import axios from "axios";
+import authHeader from "./auth.header";
 
 const API_URL = `http://localhost:4005/api/peep`;
 
 const createPeep = async (content) => {
     try {
-        const response = await axios.post(`${API_URL}/`, {
-            content
-        });
+        const response = await axios.post(`${API_URL}/`, 
+            {content},
+            {headers: authHeader()}
+        );
         const data = await response.data;
 
         return data;

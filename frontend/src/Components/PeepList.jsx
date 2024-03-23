@@ -10,7 +10,7 @@ const PeepList = ({peeps}) => {
     return (
 
      
-        <div className="container text-center" id="fav-locations-container">
+        <div className="container text-center" id="peep-list-container">
         
             <div className="row">
                 <h2>Latest Peeps!</h2>

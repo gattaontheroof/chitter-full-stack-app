@@ -85,6 +85,16 @@ function App() {
       <CreatePeep />
 
       <Footer />
+
+
+      What's for dinner tonight? And who's cooking?
+      Party time tomorrow in Edinburgh, 7 degrees yay
+      It's a full moon tonight, the werewolves are out!
+      The quick brown fox jumped over the lazy dog.
+      Breeding season for toads has begun!
+      Who let the frogs out!?
+      Kermits big day today!
+
     */
   
   );

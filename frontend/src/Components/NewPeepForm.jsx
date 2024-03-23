@@ -31,7 +31,7 @@ const NewPeepForm = ({ currentUser, onPeepCreated }) => {
       <div className="center-container" id="post-new-peep">
         <div className="card w-50" >  
           <div className="card-body">
-            <h5 className="card-title">Post a peep...</h5>
+          <h5 className="card-title center-text">Post a peep...</h5>
            
             {currentUser ? (
               <form onSubmit={handlePost}>
@@ -56,7 +56,7 @@ const NewPeepForm = ({ currentUser, onPeepCreated }) => {
                 )}
               </form>
             ) : (
-              <p>Please Login to post a Peep</p>
+              <h5 className="center-text">Please Login to post a Peep!</h5>
             )} 
 
           </div>

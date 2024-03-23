@@ -57,7 +57,7 @@ const LoginForm = ({ onLogin }) => {
         />
       </div>
       <br/>
-      <div className="form-group">
+      <div className="form-group center-button">
         <button type="submit" className="btn btn-success">
           Login
         </button>

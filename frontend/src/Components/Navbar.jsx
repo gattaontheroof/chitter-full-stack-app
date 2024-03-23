@@ -1,11 +1,12 @@
 import React from 'react';
 
+
 const Navbar = ({ currentUser, onLoginClick, onLogoutClick }) => {
 
   return (
 
     <nav className="navbar navbar-dark bg-dark">
-      <h3>Chitter</h3> 
+       <img src={`/assets/chitter_logo.png`} alt="Logo" id="logo" />
 
       {currentUser ? (
         <button className="btn btn-success" id="navbarButton" onClick={onLogoutClick}>

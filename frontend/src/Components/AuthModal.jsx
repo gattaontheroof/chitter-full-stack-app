@@ -21,7 +21,11 @@ function AuthModal({ onLogin, onCancel }) {
             return (
                 <div>
                     <div>Please Login to post your peeps</div> 
-                    <button type="button" className="btn btn-success" onClick={showLogin}>Login</button>
+                    <br/>
+                    <div className="center-button">
+                    <button type="button" className="btn btn-success" id="login-button" onClick={showLogin}>Login</button>
+                    </div>
+                    <br/>
                     <div>Don't have an account? <a href="#" onClick={showRegister}>Register</a> 
                     </div>
                 </div>
@@ -30,7 +34,7 @@ function AuthModal({ onLogin, onCancel }) {
       };
 
     return (
-        <div className="modal" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+        <div className="modal" tabIndex="-1" role="dialog" id= "auth-modal" style={{ display: 'block' }}>
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -42,7 +46,7 @@ function AuthModal({ onLogin, onCancel }) {
                 {renderModalBody()}
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={onCancel}>Close</button>
+              <div className="close-button" onClick={onCancel}>&times;</div>
               </div>
             </div>
           </div>

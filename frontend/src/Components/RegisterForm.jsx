@@ -90,8 +90,8 @@ const RegisterForm = () => {
         />
       </div>
       <br/>
-      <div className="form-group">
-        <button type="submit" className="btn btn-primary">
+      <div className="form-group center-button">
+        <button type="submit" className="btn btn-success">
           Register
         </button>
       </div>
