@@ -22,7 +22,7 @@ describe('Navbar components', () => {
       });
       
       test('calls onLoginClick when Login button is clicked', () => {
-        const onLoginClick = jest.fn();
+        const onLoginClick = vi.fn();
         render(<Navbar onLoginClick={onLoginClick} />);
         const loginButton = screen.getByText(/Login/i);
         fireEvent.click(loginButton);

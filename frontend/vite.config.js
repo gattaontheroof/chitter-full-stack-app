@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: "jsdom",
-    setupFiles: ["./tests/config/setup.js"],
-    testMatch: ["./tests/**/*.test.jsx$?"],
+    setupFiles: ["./test/config/setup.js"],
+    testMatch: ["./test/**/*.test.jsx$?"],
     globals: true,
 },
 })

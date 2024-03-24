@@ -1,14 +1,14 @@
 import axios from "axios";
-import { createPeep,  getAllPeeps } from "../../src/services/peep.service";
-const { authHeader } = require('../../src/services/auth-header');
+import peepService from "../../src/services/peep.service";
+import authHeader from "../../src/services/auth.header";
 
-jest.mock('axios');
-jest.mock('../../src/services/auth-header');
+vi.mock('axios');
+vi.mock('../../src/services/auth.header');
 
 describe('createPeep', () => {
-    const API_URL = 'http://localhost:3000/api/peeps';
+    const API_URL = 'http://localhost:4005/api/peep';
     const content = 'Test peep';
-    const headers = { 'Authorization': 'Bearer token' };
+    const headers = { 'Authorization': 'jwt' };
 
     beforeEach(() => {
         authHeader.mockReturnValue(headers);
@@ -18,7 +18,7 @@ describe('createPeep', () => {
         const response = { data: { message: 'Peep created successfully' } };
         axios.post.mockResolvedValue(response);
 
-        const result = await createPeep(content);
+        const result = await peepService.createPeep(content);
 
         expect(axios.post).toHaveBeenCalledWith(`${API_URL}/`, { content }, { headers });
         expect(result).toEqual(response.data);
@@ -28,7 +28,7 @@ describe('createPeep', () => {
         const error = { response: { data: { message: 'Error message' } } };
         axios.post.mockRejectedValue(error);
 
-        const result = await createPeep(content);
+        const result = await peepService.createPeep(content);
 
         expect(axios.post).toHaveBeenCalledWith(`${API_URL}/`, { content }, { headers });
         expect(result).toEqual({ error: error.response.data.message });

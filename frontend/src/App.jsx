@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Homepage from "./Components/Homepage";
 import AuthModal from './Components/AuthModal';
 import Navbar from './Components/Navbar';
 import NewPeepForm from './Components/NewPeepForm';
