@@ -1,16 +1,3 @@
-// import { formatDistanceToNow, format } from 'date-fns';
-
-// function formatDate(date) {
-//   const now = new Date();
-//   const differenceInHours = (now - date) / 1000 / 60 / 60;
-
-//   if (differenceInHours < 24) {
-//     return formatDistanceToNow(date, { addSuffix: true });
-//   } else {
-//     return format(date, "dd/MM/yyyy HH:mm");
-//   }
-// }
-
 const formatDate = (date) => {
 
   const dateObj = new Date(date);
@@ -25,6 +12,8 @@ const formatDate = (date) => {
   if(minutes < 10) {
     minutes = "0" + minutes;
   }
+
+  minutes = "" + minutes;
 
   // Names of months
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
