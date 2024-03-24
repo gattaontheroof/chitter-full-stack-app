@@ -39,6 +39,10 @@ const RegisterForm = ({ showLogin }) => {
     if(!register.error) {
       setRegistered(true);
       setErrorMessage('');
+      setName('');
+      setEmail('');
+      setUsername('');
+      setPassword('');
     }
     else {
       setRegistered(false);

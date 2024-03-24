@@ -1,5 +1,6 @@
 import express from 'express';
 import authFunctions from '../controllers/auth.controller.js';
+import { registrationValidation } from '../middlewares/authValidation.js';
 
 const authRouter = express.Router();
 
@@ -13,7 +14,7 @@ authRouter.use((req, res, next) => {
     next();
 });
 
-authRouter.post("/register", register);
+authRouter.post("/register", [registrationValidation], register);
 authRouter.post("/login", login);
 
 export default authRouter;

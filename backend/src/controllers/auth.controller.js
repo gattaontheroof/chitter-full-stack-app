@@ -1,7 +1,13 @@
 import { authService } from "../services/auth.service.js";
+import { validationResult } from 'express-validator';
 
 const register = async (req, res) => {
 
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(422).send({ message: `Registration Failed` });
+    }
+    
     const { name, username, email, password } = req.body;
 
     try {
