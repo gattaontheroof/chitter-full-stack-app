@@ -1,4 +1,4 @@
-# Back-end swimlane diagram:
+# Back-end diagrams:
 
 ![alt text](back-end-routing-diagram.png)
 
@@ -19,3 +19,8 @@
 
 
 # Component hierarchy diagram:
+![alt text](component-hierarchy-diagram.png)
+
+
+# Relationship diagram:
+![alt text](relationship-diagram.png)
