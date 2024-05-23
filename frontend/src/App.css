@@ -1,0 +1,58 @@
+html,
+body,
+#root {
+    background-color: #D9D9D9;
+    font-family: 'Roboto';
+}
+
+#logo {
+ height: 50px; 
+ margin-left: 10%;
+
+}
+#post-new-peep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+  }
+#navbarButton {
+  position: absolute; 
+  right:20%; 
+  color: white;
+}
+
+
+.modal-content {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+  margin: 1%;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+}
+
+.close-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+#peep-list-container {
+  width: 50%;
+}
+.center-text {
+  text-align: center;
+}
+
+@media (max-width: 767px) {
+
+}
