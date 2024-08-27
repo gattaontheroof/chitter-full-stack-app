@@ -1,0 +1,7 @@
+[build]
+  publish = "build"  # or "dist", depending on where your app is built
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
