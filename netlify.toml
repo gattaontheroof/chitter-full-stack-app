@@ -1,7 +1,7 @@
 [build]
-publish = "frontend/dist"
-command = "npm run build"
- publish = "frontend/dist"
+  base = "chitter-full-stack-app/frontend"  
+  command = "npm run build"  
+  publish = "chitter-full-stack-app/frontend/dist"  
 
 
 [[redirects]]
