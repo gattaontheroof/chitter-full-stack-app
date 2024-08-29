@@ -1,5 +1,9 @@
 [build]
-  base = "chitter-full-stack-app/frontend"
   command = "npm run build"
-  publish = "chitter-full-stack-app/frontend/dist"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
