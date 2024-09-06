@@ -71,30 +71,6 @@ function App() {
       {showModal && <div className="modal-backdrop fade show"></div>}
 
     </div>
-
-
-    /*
-      <NewPeepBox />
-      <Sidenav/>
-      <PeepList />
-        <Peep />
-          <ReplyList /> // stretch
-            <Reply />   // stretch
-
-      <CreatePeep />
-
-      <Footer />
-
-
-      What's for dinner tonight? And who's cooking?
-      Party time tomorrow in Edinburgh, 7 degrees yay
-      It's a full moon tonight, the werewolves are out!
-      The quick brown fox jumped over the lazy dog.
-      Breeding season for toads has begun!
-      Who let the frogs out!?
-      Kermit's big day today!
-
-    */
   
   );
   

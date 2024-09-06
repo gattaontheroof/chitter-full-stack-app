@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = `http://localhost:4005/api/auth/`;
+const API_URL = `http://chitter-web-service.onrender.com/api/auth`;
 
 const register = async (name, username, email, password) => {
     try {
