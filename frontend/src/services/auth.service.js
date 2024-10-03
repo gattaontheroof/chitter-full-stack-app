@@ -17,7 +17,7 @@ const register = async (name, username, email, password) => {
         return data;
     }
     catch (error) {
-        return { error: error.response.data.message };
+        return { error: error.response?.data?.message || "Unknown error occurred" };
     }
 };
 
