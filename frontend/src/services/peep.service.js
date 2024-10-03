@@ -1,7 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth.header";
 
-const API_URL = `https://chitter-web-service.onrender.com/api/peep`;
+const API_URL = 
+`https://chitter-web-service.onrender.com/api/peep`;
+// `http://localhost:4005/api/peep`;
 
 const createPeep = async (content) => {
     try {
